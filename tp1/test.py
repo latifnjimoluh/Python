@@ -53,7 +53,8 @@ def display_best_scores(scores):
 
 # Fonction pour jouer un son
 def play_sound(sound_file):
-    pygame.mixer.Sound(sound_file).play()
+    pygame.mixer.music.load(sound_file)
+    pygame.mixer.music.play()
 
 # Fonction principale du jeu
 def play_game():
@@ -115,7 +116,7 @@ def play_game():
     print(f"\nVous avez {attempts_allowed} tentatives pour deviner le nombre.")
 
     # Jouer le son de début
-    play_sound("start_sound.mp3")  # Assurez-vous d'avoir un fichier son 'start_sound.wav'
+    play_sound("start_sound.mp3")  # Assurez-vous d'avoir un fichier son 'start_sound.mp3'
 
     # Générer un nombre aléatoire dans l'intervalle
     target = random.randint(min_val, max_val)
@@ -141,7 +142,7 @@ def play_game():
             elapsed_time = time.time() - start_time
 
             # Jouer le son de victoire
-            play_sound("start_sound.mp3")  # Assurez-vous d'avoir un fichier son 'win_sound.wav'
+            play_sound("start_sound.mp3")  # Assurez-vous d'avoir un fichier son 'win_sound.mp3'
 
             # Mettre à jour ou ajouter un score
             if existing_player:
@@ -164,7 +165,7 @@ def play_game():
     else:
         print(f"\nDommage ! Vous avez utilisé toutes vos tentatives. Le nombre était {target}.")
         # Jouer le son de défaite
-        play_sound("start_sound.mp3")  # Assurez-vous d'avoir un fichier son 'lose_sound.wav'
+        play_sound("start_sound.mp3")  # Assurez-vous d'avoir un fichier son 'lose_sound.mp3'
 
 # Menu principal
 def main_menu():
