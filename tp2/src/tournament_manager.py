@@ -1,4 +1,5 @@
 import csv
+import time
 from src.tournament import Tournament
 
 class TournamentManager:
@@ -8,8 +9,14 @@ class TournamentManager:
     def start_tournament(self):
         """Lance le tournoi et permet à l'utilisateur de choisir de continuer ou d'arrêter après chaque tour."""
         while True:
-            self.tournament.start_round()
-            self.tournament.display_ranking()
+            start_time = time.time()  # Enregistrer le temps de début du tour
+
+            self.tournament.start_round()  # Démarre un tour du tournoi
+            self.tournament.display_ranking()  # Affiche le classement
+
+            end_time = time.time()  # Enregistrer le temps de fin du tour
+            elapsed_time = end_time - start_time  # Calculer la durée du tour
+            print(f"\nDurée du tour {self.tournament.round - 1}: {elapsed_time:.2f} secondes.")
 
             # Demande à l'utilisateur s'il veut continuer ou arrêter le tournoi
             user_choice = input("\nSouhaitez-vous continuer (C) ou arrêter (A) le tournoi ? : ").lower()
